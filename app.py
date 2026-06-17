@@ -3,7 +3,7 @@ from google import genai
 
 # Gemini Client
 client = genai.Client(
-    api_key=st.secrets["AQ.Ab8RN6L0XTacQTvfuJS6txgUo3J5kNA7Vbrq2BIP74lGkli1Aw"]
+    api_key=st.secrets["GEMINI_API_KEY"]
 )
 
 st.set_page_config(page_title="NayePankh AI Career Assistant")
