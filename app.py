@@ -39,6 +39,7 @@ if prompt:
         history += f"{msg['role']}: {msg['content']}\n"
 
     # Generate response
+ try:
     response = client.models.generate_content(
         model="gemini-2.0-flash",
         contents=f"""
@@ -50,6 +51,11 @@ Conversation history:
 Answer clearly and professionally.
 """
     )
+
+    answer = response.text
+
+except Exception as e:
+    answer = str(e)
 
     answer = response.text
 
