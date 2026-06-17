@@ -38,7 +38,6 @@ if prompt:
     for msg in st.session_state.messages:
         history += f"{msg['role']}: {msg['content']}\n"
 
-    # Generate response
 # Generate response
 try:
     response = client.models.generate_content(
@@ -65,18 +64,3 @@ with st.chat_message("assistant"):
 st.session_state.messages.append(
     {"role": "assistant", "content": answer}
 )
-
-    answer = response.text
-
-except Exception as e:
-    answer = str(e)
-
-    answer = response.text
-
-    # Show assistant response
-    with st.chat_message("assistant"):
-        st.markdown(answer)
-
-    st.session_state.messages.append(
-        {"role": "assistant", "content": answer}
-    )
