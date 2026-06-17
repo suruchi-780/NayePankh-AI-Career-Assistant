@@ -55,7 +55,8 @@ Answer clearly and professionally.
     answer = response.text
 
 except Exception as e:
-    answer = str(e)
+    st.error(e)
+    answer = f"Error: {e}"
 
 # Show assistant response
 with st.chat_message("assistant"):
