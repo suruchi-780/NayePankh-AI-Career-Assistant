@@ -39,7 +39,8 @@ if prompt:
         history += f"{msg['role']}: {msg['content']}\n"
 
     # Generate response
- try:
+# Generate response
+try:
     response = client.models.generate_content(
         model="gemini-2.0-flash",
         contents=f"""
@@ -51,6 +52,19 @@ Conversation history:
 Answer clearly and professionally.
 """
     )
+
+    answer = response.text
+
+except Exception as e:
+    answer = str(e)
+
+# Show assistant response
+with st.chat_message("assistant"):
+    st.markdown(answer)
+
+st.session_state.messages.append(
+    {"role": "assistant", "content": answer}
+)
 
     answer = response.text
 
